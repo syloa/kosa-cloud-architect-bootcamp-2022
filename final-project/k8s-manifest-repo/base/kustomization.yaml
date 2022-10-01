@@ -1,0 +1,10 @@
+dapiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - frontend-rollout.yaml
+  - frontend-service.yaml
+  - flask-login-rollout.yaml
+  - flask-login-service.yaml
+  - flask-register-rollout.yaml
+  - flask-register-service.yaml
+  - ingress.yaml

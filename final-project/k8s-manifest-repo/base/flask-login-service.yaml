@@ -1,0 +1,32 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: rollout-bluegreen-active
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
+spec:
+  selector:
+    app: rollout-bluegreen
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 5002
+    targetPort: 5002
+    nodePort: 30091
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: rollout-bluegreen-preview
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
+spec:
+  selector:
+    app: rollout-bluegreen
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 5002
+    targetPort: 5002
+    nodePort: 30092
